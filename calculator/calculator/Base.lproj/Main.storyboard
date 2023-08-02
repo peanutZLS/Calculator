@@ -111,7 +111,7 @@
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="8">
                                                             <attributes>
-                                                                <font key="NSFont" size="30" name=".SFNS-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="30"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -130,7 +130,7 @@
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="9">
                                                             <attributes>
-                                                                <font key="NSFont" size="30" name=".SFNS-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="30"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -157,7 +157,7 @@
                                                     </attributedString>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="multiple:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rff-PH-gre"/>
+                                                    <action selector="multiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jyP-jN-xO6"/>
                                                 </connections>
                                             </button>
                                         </subviews>

@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var numberOnScreen:Double = 0
-    var previousNumber:Double = 0
+    var numberOnScreen:Double = 0   //現在數字
+    var previousNumber:Double = 0   //上一個數字
     var performingMath = false
     var operation = "none"
     var startNew = true
+    var con :String = ""
+    var answer :Int = 0
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
@@ -40,17 +42,19 @@ class ViewController: UIViewController {
         if label.text != nil{
             if startNew == true{
                 label.text = "\(inputNumber)"
+                con = label.text!
+                print(con)
                 startNew = false
             }else{
-                if label.text == "0" || label.text == "+" || label.text == "-" || label.text == "x" || label.text == "/" {
-                    label.text = "\(inputNumber)"
-                }else{
-                    label.text = label.text! + "\(inputNumber)"
+                label.text = label.text! + "\(inputNumber)"
+                con += String(inputNumber)
+                print(con)
                 }
-            }
             numberOnScreen = Double(label.text!) ?? 0
+            }
+           
         }
-    }
+    
     
     @IBAction func clear(_ sender: UIButton) {
         label.text = "0"
@@ -64,52 +68,47 @@ class ViewController: UIViewController {
     
     @IBAction func add(_ sender: UIButton) {
         label.text = "+"
-        operation = "add"
+        con += "+"
+        print(con)
+        operation = "+"
         performingMath = true
-        previousNumber = numberOnScreen
     }
     
     @IBAction func substract(_ sender: UIButton) {
         label.text = "-"
-        operation = "substract"
+        con += "-"
+        print(con)
+        operation = "-"
         performingMath = true
-        previousNumber = numberOnScreen
     }
     
     @IBAction func multiply(_ sender: UIButton) {
-        label.text = "x"
-        operation = "multiply"
+        label.text = "*"
+        con += "*"
+        print(con)
+        operation = "*"
         performingMath = true
-        previousNumber = numberOnScreen
     }
     
     @IBAction func divide(_ sender: UIButton) {
         label.text = "/"
-        operation = "divide"
+        con += " / "
+        print(con)
+        operation = "/"
         performingMath = true
-        previousNumber = numberOnScreen
     }
     
     @IBAction func giveMeAnswer(_ sender: UIButton) {
-        if performingMath == true{
-            if operation == "add"{
-                numberOnScreen = previousNumber + numberOnScreen
-                makeOKNumberString(from: numberOnScreen)
-            }else if operation == "substract"{
-                numberOnScreen = previousNumber - numberOnScreen
-                makeOKNumberString(from: numberOnScreen)
-            }else if operation == "multiply"{
-                numberOnScreen = previousNumber * numberOnScreen
-                makeOKNumberString(from: numberOnScreen)
-            }else if operation == "divide"{
-                numberOnScreen = previousNumber / numberOnScreen
-                makeOKNumberString(from: numberOnScreen)
-            }else if operation == "none"{
-                label.text = "0"
-            }
-            performingMath = false
-            startNew = true
-        }
+        if performingMath {
+                   let expression = NSExpression(format: con)
+                   if let result = expression.expressionValue(with: nil, context: nil) as? Double {
+                       makeOKNumberString(from: result)
+                       con = String(result)
+                   }
+                   performingMath = false
+                   startNew = false
+                    
+               }
     }
     
     override func viewDidLoad() {
