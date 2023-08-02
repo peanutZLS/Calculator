@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  Calculator
 //
-//  Created by appsgaga on 2018/9/8.
 //  Copyright © 2018 appsgaga. All rights reserved.
 //
 
